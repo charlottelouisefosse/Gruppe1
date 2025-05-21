@@ -1,4 +1,11 @@
+using Gruppe1.Models;
+using Gruppe1.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=pollen.db"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
