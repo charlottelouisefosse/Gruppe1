@@ -1,0 +1,36 @@
+@model IEnumerable<Gruppe1.Models.PollenRegistering>
+
+@{
+    ViewData["Title"] = "Pollenregistrering";
+}
+
+<h2>Pollen registrering</h2>
+
+<a class="btn btn-success mb-3" asp-action="Create">Opprett ny</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Dato</th>
+            <th>Type pollen</th>
+            <th>Nivå</th>
+            <th>Handlinger</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Date.ToShortDateString()</td>
+            <td>@item.TypeOfPollen</td>
+            <td>@item.Level</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">Rediger</a>
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger btn-sm">Slett</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
