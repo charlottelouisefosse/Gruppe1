@@ -1,0 +1,6 @@
+Kjørt kommandoen: 
+curl -X GET "https://pollen.googleapis.com/v1/forecast:lookup?location.latitude=59.26754&location.longitude=10.40762&days=5&key=AIzaSyCcJ3vf6FXeMkfgdGuJytfRuh6PQ_tDJ7U"
+
+URL-link oppdatert med latitude og longitude koordinater, parameter 5 (antall dager fremover i tid) og API Key.
+
+Output som forventet.
