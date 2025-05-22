@@ -1,0 +1,31 @@
+@model Gruppe1.Models.PollenRegistering
+
+@{
+    ViewData["Title"] = "Opprett ny pollenregistrering";
+}
+
+<h2>Opprett ny pollenregistrering</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input asp-for="Date" class="form-control" type="date" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TypeOfPollen" class="control-label"></label>
+        <input asp-for="TypeOfPollen" class="form-control" />
+        <span asp-validation-for="TypeOfPollen" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Level" class="control-label"></label>
+        <input asp-for="Level" class="form-control" type="number" />
+        <span asp-validation-for="Level" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Lagre</button>
+    <a asp-action="Index" class="btn btn-secondary">Avbryt</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
