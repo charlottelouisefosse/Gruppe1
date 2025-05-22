@@ -1,5 +1,6 @@
 using Gruppe1.Models;
 using Gruppe1.Data;
+using Gruppe1.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=pollen.db"));
 
-// Add services to the container.
+// Legger til services for PollenAPI
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient(); // Nødvendig for HttpClient
+builder.Services.AddHttpClient<IPollenAPIService, PollenAPIService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Konfigurerer HTTP forespørsel
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
