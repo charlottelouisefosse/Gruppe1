@@ -15,12 +15,15 @@
             <th>Value</th>
             <th>Category</th>
             <th>IndexDescription</th>
-            <th>ColorInfoID</th>
+            <th>ColorInfo</th>
         </tr>
     </thead>
     <tbody>
     @foreach (var item in Model)
     {
+        var rgb = item.ColorInfo != null
+            ? $"rgb({item.ColorInfo.Red},{item.ColorInfo.Green},{item.ColorInfo.Blue})"
+            : "rgb(255,255,255)";
         <tr>
             <td>@item.ID</td>
             <td>@item.Code</td>
@@ -28,7 +31,9 @@
             <td>@item.Value</td>
             <td>@item.Category</td>
             <td>@item.IndexDescription</td>
-            <td>@item.ColorInfoID</td>
+            <td>@item.ColorInfoID<br />
+                <span style="display:inline-block;width:24px;height:24px;background-color:@rgb;border:1px solid #ccc;"></span>
+                <span>@rgb</span></td>
         </tr>
     }
     </tbody>

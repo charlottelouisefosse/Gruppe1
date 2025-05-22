@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Gruppe1.Data; // Add this if needed
 using System.Linq;
 
@@ -16,7 +17,8 @@ namespace Gruppe1.Controllers
         public IActionResult Index()
         {
             var pollenWarnings = _context.IndexInfos
-                .OrderBy(i => i.ID) // Erstatt med riktig sortering senere
+                .Include(i => i.ColorInfo)
+                .OrderBy(i => i.ID)
                 .Take(5)
                 .ToList();
 
